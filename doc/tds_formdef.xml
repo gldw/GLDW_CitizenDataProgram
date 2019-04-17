@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<forms>
+<form name="TDSData" >
+<attr name="Pickable" type="Boolean">true</attr>
+<attr name="FormGroup">TDS</attr>
+<attr name="Description">Enter TDS Data from your assigned location</attr>   
+<attrdef type="String" name="LocationID">
+		<attr name="Category">Required</attr>
+		<attr name="Desc">Your assigned Location ID.</attr> 	
+</attrdef>
+<attrdef type="Long" name="CollectionDate">
+		<attr name="Category">Required</attr>
+		<attr name="Desc">Your assigned Location ID.</attr> 	
+</attrdef>
+<attrdef type="Double" name="Latitude">
+		<attr name="Category">Required</attr>
+		<attr name="Desc">The latitude of your sampling location.</attr> 	
+</attrdef>
+
+<attrdef type="Double" name="Longitude">
+		<attr name="Category">Required</attr>
+		<attr name="Desc">The longitude of your sampling location.</attr> 	
+</attrdef>
+<attrdef type="Double" name="TDS">
+		<attr name="Category">Required</attr>
+		<attr name="Desc">The Total Disssolved Solids in parts per million.</attr> 	
+</attrdef>
+<attrdef type="Double" name="Temperature">
+		<attr name="Category">Required</attr>
+		<attr name="Desc">The Temperature in degrees Fahrenheit.</attr> 	
+</attrdef>
+</form>
+<form name="EnterMailingAddress" >
+<attr name="Pickable" type="Boolean">true</attr>
+<attr name="Description">Enters an Address</attr>
+<attr name="FormGroup">TestData</attr>
+<attrdef name="Address">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The street address.</attr> 		
+</attrdef>
+<attrdef name="City">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The city of the mailing address</attr> 		
+</attrdef>
+<attrdef name="State">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The state for the mailing address</attr> 		
+</attrdef>
+<attrdef name="ZipCode" type="Integer">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">5</attr>
+	<attr name="Desc">The 5 digit postal code of the mailing address.</attr> 		
+</attrdef>
+</form>
+<form name="EnterEMail" >
+<attr name="Pickable" type="Boolean">true</attr>
+<attr name="FormGroup">TestData</attr>
+<attr name="Description">Enters a name and associated email address.</attr>
+<attrdef name="FirstName">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="Desc">First name of the person to contact</attr> 		
+</attrdef>
+<attrdef name="LastName">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="Desc">Last name of the person to contact</attr> 		
+</attrdef>
+<attrdef name="EMail">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">A valid Email is required.</attr> 	
+</attrdef>
+</form>
+<form name="EnterTimeInterval" >
+ <attr name="Pickable" type="Boolean">true</attr>
+ <attr name="Description">Enter a starting and ending time interval</attr>
+ <attr name="FormGroup">TestData</attr>
+ <attrdef name="StartTime" type="Long">
+     <attr name="DefaultValue" type="String">${Time.OneHourAgo}</attr>
+     <attr name="SpecialType">Datetime</attr>
+ </attrdef>
+ <attrdef name="EndTime" type="Long">
+     <attr name="DefaultValue" type="String">${Time.Now}</attr>
+     <attr name="SpecialType">Datetime</attr>
+ </attrdef>
+</form>
+<form name="EnterLong" >
+<attr name="Pickable" type="Boolean">true</attr>
+<attr name="FormGroup">TestData</attr>
+<attr name="Description">Enters a long value for testing</attr>
+<attrdef name="LongTimeValue" type="Long">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">13</attr>
+</attrdef>
+</form><!-- ADMINISTRATION - PICKABLE -->
+<form name="Login" >
+<attr name="Pickable" type="Boolean">true</attr>
+<attr name="Description">Login in for the requested container</attr>
+<attr name="FormGroup">Account</attr>
+<attrdef name="Username">
+	<attr name="Category">Required</attr>
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+</form>
+<form name="enterRemoteDirectory" >
+<attr name="Pickable" type="Boolean">true</attr>
+<attr name="Description">Enters a VDAB directory for a Remote Container.</attr>
+<attr name="FormGroup">Administration</attr>
+<attrdef name="ContainerLocation">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The location of the container.</attr> 		
+</attrdef>
+<attrdef name="VDABDirectory">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The VDAB directory.</attr> 		
+</attrdef>
+</form>
+<form name="enterRemoteFlow" >
+<attr name="Pickable" type="Boolean">true</attr>
+<attr name="Description">Enters a flow path (FlowGroup/FlowName) for a Remote Container.</attr>
+<attr name="FormGroup">Administration</attr>
+<attrdef name="ContainerLocation">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The location of the container.</attr> 		
+</attrdef>
+<attrdef name="FlowPath">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The complete path to the flow including FlowGroup/FlowName.</attr> 		
+</attrdef>
+</form>
+<form name="addUserRole" >
+<attr name="Pickable" type="Boolean">true</attr>
+<attr name="Description">Add a role for a specified user</attr>
+<attr name="FormGroup">Administration</attr>
+<attrdef name="User">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="Desc">The name of the user who will have a role added</attr> 		
+</attrdef>
+<attrdef name="Role">
+	<attr name="Category">Required</attr>
+	<attr name="Enum">UserRole</attr>
+	<attr name="Desc">Select the user role for this user.</attr> 		
+</attrdef>
+</form>
+<form name="removeUserRole" >
+<attr name="Pickable" type="Boolean">true</attr>
+<attr name="Description">Remove a role for a named users</attr>
+<attr name="FormGroup">Administration</attr>
+<attrdef name="User">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="Desc">The name of the user who will have access for a role removed.</attr> 		
+</attrdef>
+<attrdef name="Role">
+	<attr name="Category">Required</attr>
+	<attr name="Enum">UserRole</attr>
+	<attr name="Desc">The role to remove.</attr> 		
+</attrdef>
+</form>
+<!-- ADMINISTRATION - HIDDEN -->
+<form name="SetParentContainer" >
+<attr name="FormGroup">Administration</attr>
+<attr name="Description">Sets the parent container for this container by specifying its location which includes the domain and port. If not specified the port is assume to be the default port of 1775.</attr>
+<attrdef name="Username">
+	<attr name="Category">Standard</attr>
+	<attr name="DefaultValue" type="String" >${Client.Username}</attr> 	
+	<attr name="Readonly" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Standard</attr>
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="ParentLocation">
+    <attr name="Desc">Location of the parent which includes the domain and port. If not specified the port is assume to be the default port of 1775.</attr>
+   	<attr name="Category">Required</attr>
+</attrdef>
+</form>
+<form name="SetEventDB" >
+<attr name="FormGroup">Administration</attr>
+<attr name="Description">Sets or resets the event database used for event persistence</attr>
+<attrdef name="Username">
+	<attr name="Category">Standard</attr>
+	<attr name="DefaultValue" type="String" >${Client.Username}</attr> 	
+	<attr name="Readonly" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Standard</attr>
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="PersistenceType" type="Integer">
+    <attr name="Desc">Sets the type of the event persistence. Currently only SQL and MongoDB are supported. Future options will include flatfile and HDFS.</attr>
+   	<attr name="Category">Required</attr>
+	<attr name="Enum">EventPersistenceType</attr>
+	<attr name="DefaultValue"  type="String">SQL Database</attr>
+</attrdef>
+</form>
+<form name="MakeContainerGroup" >
+<attr name="FormGroup">Administration</attr>
+<attr name="Description">Defines this container as the parent of a container group</attr>
+<attrdef name="Username">
+	<attr name="Category">Standard</attr>
+	<attr name="DefaultValue" type="String" >${Client.Username}</attr> 	
+	<attr name="Readonly" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Standard</attr>
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="ContainerGroupName">
+    <attr name="Desc">Sets the label or name for this group of containers.</attr>
+   	<attr name="Category">Required</attr>
+</attrdef>
+<attrdef name="GroupDescription">
+    <attr name="Desc">Provides a complete description of this container group.</attr>
+	<attr name="Category">Required</attr>
+</attrdef>
+</form>
+<!-- VDAB - HIDDEN -->
+<form name="VDABDownload" >
+<attr name="Description">Captures user information prior to downloading VDAB.</attr>
+<attr name="FormGroup">VDAB</attr>
+<attrdef name="Username">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">OPTIONAL: If you are a registered VDAB user enter your Username.</attr> 		
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">OPTIONAL: If you are a registered VDAB user enter your password.</attr> 	
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="FirstName">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">First name</attr> 		
+</attrdef>
+<attrdef name="LastName">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">Last name</attr> 		
+</attrdef>
+<attrdef name="EMail">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">A valid Email is required.</attr> 	
+</attrdef>
+</form>
+<form name="LoadModule" >
+<attr name="FormGroup">VDAB</attr>
+<attr name="Description">Load a package containing special VDAB node type or Library</attr>
+<attrdef name="PackageType">
+	<attr name="Category">Required</attr>
+	<attr name="RefreshOnChange" type="Boolean">true</attr>
+	<attr name="Enum">PackageType</attr>
+	<attr name="DefaultValue">All</attr>
+	<attr name="Desc">The type of package to download</attr> 	
+</attrdef>
+<attrdef name="AccountName">
+	<attr name="Category">Standard</attr>
+	<attr name="Readonly" type="Boolean">true</attr>
+	<attr name="DefaultValue" type="String" >${Client.AccountName}</attr> 
+</attrdef>
+<attrdef name="Username">
+	<attr name="Category">Standard</attr>
+	<attr name="Readonly" type="Boolean">true</attr>
+	<attr name="DefaultValue" type="String" >${Client.Username}</attr> 
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="ModuleName" type="String">
+	<attr name="PickFromFunction">getLoadablePackagesOfType(${PackageType})</attr>
+	<attr name="DefaultValue"> </attr>
+	<attr name="Desc">The package that should be loaded. Pick from available packages.</attr> 
+</attrdef>	
+</form>
+<form name="ConfigureContainer" >
+<attr name="Description">Enter data to define the initial configuration of a new container</attr>
+<attr name="FormGroup">VDAB</attr>
+<attrdef name="AccountName">
+	<attr name="Category">Required</attr>
+  	<attr name="DefaultValue" type="String" >${Client.AccountName}</attr> 
+	<attr name="Desc">The account associated with this account.</attr> 	
+</attrdef>
+<attrdef name="Administrator">
+	<attr name="Category">Required</attr>
+  	<attr name="DefaultValue" type="String" >${Client.Username}</attr> 
+	<attr name="Desc">The name of the user who is the primary administrator for this container.</attr> 	
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="SpecialType">Password</attr>
+	<attr name="Desc">The password for the primary administrative user.</attr> 	
+</attrdef>
+<attrdef  type="Integer" name="SecurityClass">
+	<attr name="Category">Required</attr>
+	<attr name="DefaultValue" type="Integer" >3</attr> 
+	<attr name="Enum">SecurityClass</attr>
+	<attr name="Desc">Creates an initial security classification. Private, Restricted, Standard, Public.</attr> 	
+</attrdef>
+<attrdef name="ContainerPublicName">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The public name associated with this container</attr> 	
+</attrdef>
+<attrdef name="ContainerLocation">
+	<attr name="Category">Required</attr>
+<!-- <attr name="DefaultValue" type="String">${Container.ContainerLocation}</attr> -->
+	<attr name="Desc">The external domain and port that can be used to access this container separated by a semicolon.</attr> 	
+</attrdef>
+<attrdef name="ParentLocation">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">The external domain and port for the parent container for this container. The domain and port should be separated by a semicolon.</attr> 
+</attrdef>
+</form>
+<form name="editAccount" >
+<attr name="Description">Edit an account</attr>
+<attr name="FormGroup">VDAB</attr>
+<attrdef name="AccountName">
+    <attr name="Readonly" type="Boolean">true</attr>
+	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="DefaultValue" type="String" >${Client.AccountName}</attr> 	
+	<attr name="Desc">The assigned account name. For personal accounts this is not needed</attr> 		
+</attrdef>
+<attrdef name="Username">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="DefaultValue" type="String" >${Client.Username}</attr> 	
+	<attr name="Desc">The username of the person responsible for this account. Do not include spaces</attr> 		
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The password for the person associated with the account.</attr> 	
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="EMail">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">A valid Email is required.</attr> 	
+</attrdef>
+<attrdef name="City">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">The city of the account owner</attr> 	
+</attrdef>
+<attrdef name="State">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">The state of the account owner</attr> 	
+</attrdef>
+<attrdef name="Country">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">The country of the account owner</attr> 	
+</attrdef>
+<attrdef name="PostalCode">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">The postal code of the account owner</attr> 	
+</attrdef>
+</form>
+<form name="RegisterUser" >
+<attr name="Description">Associates a user with a VDAB Client, creating the user if necessary. If the user is newly created you will receive a confirmation EMail.</attr>
+<attr name="FormGroup">VDAB</attr>
+<attrdef name="Username">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The user name associated with this user. It should not include spaces and must be at least 8 characters.</attr> 		
+</attrdef>
+<attrdef name="AccountType" type="Integer">
+	<attr name="Category">Hidden</attr>
+	<attr name="DefaultValue" type="Integer" >1</attr>
+	<attr name="Desc">The account type. Either personal or corporate</attr> 	
+	<attr name="Enum">AccountType</attr>
+</attrdef>
+<attrdef name="AccountName">
+	<attr name="Category">Hidden</attr>
+	<attr name="Desc">Account name is hidden and will be set to the user name.</attr> 		
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="Desc">A password. This must be at least 8 digits and contain letters, numbers and a special character.</attr> 	
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="EMail">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">A valid Email is required.</attr> 	
+</attrdef>
+<attrdef name="FirstName">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">First name</attr> 		
+</attrdef>
+<attrdef name="LastName">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">Last name</attr> 		
+</attrdef>
+</form>
+<!-- VDAB - DEPRECATED -->
+<form name="ConfigureAccount" >
+<attr name="Description">Configures the account tables</attr>
+<attr name="FormGroup">VDAB</attr>
+<attrdef name="AccountType" type="Integer">
+	<attr name="Category">Required</attr>
+	<attr name="DefaultValue" type="Integer" >1</attr>
+	<attr name="Desc">The account type. Either personal or corporate</attr> 	
+	<attr name="Enum">AccountType</attr>
+	<attr name="Readonly" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="AccountName">
+    <attr name="Readonly" type="Boolean">true</attr>
+	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="Desc">The assigned account name. For personal accounts this is not needed</attr> 		
+</attrdef>
+<attrdef name="Username">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="Desc">The username of the person responsible for this account. Do not include spaces</attr> 		
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The password for the person associated with the account.</attr> 	
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="EMail">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">A valid Email is required.</attr> 	
+</attrdef>
+<attrdef name="CloudContainer" type="Boolean">
+	<attr name="Category">Standard</attr>
+	<attr name="DefaultValue" type="Boolean" >true</attr>
+	<attr name="Desc">If set creates a complimentary VDAB cloud container.</attr> 	
+</attrdef>
+<attrdef name="City">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">The city of the account owner</attr> 	
+</attrdef>
+<attrdef name="State">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">The state of the account owner</attr> 	
+</attrdef>
+<attrdef name="Country">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">The country of the account owner</attr> 	
+</attrdef>
+<attrdef name="PostalCode">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">The postal code of the account owner</attr> 	
+</attrdef>
+</form>
+<form name="ActivateContainer" >
+<attr name="FormGroup">VDAB</attr>
+<attr name="Description">Allows initial activation of the selected container. Select from previously purchased activation keys</attr>
+<attrdef name="AccountName">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The account name given to you by MJA Technology.</attr> 		
+	<attr name="Readonly" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The password assigned to your account.</attr> 	
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="ActivationKey">
+	<attr name="Category">Required</attr>
+	<attr name="SpecialType">TextArea</attr>
+	<attr name="Desc">Your system activation key which you should have received in the email confirming your registration</attr>
+</attrdef>
+<attrdef name="ContainerName">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The label assigned to this container.</attr> 	
+</attrdef>
+<attrdef name="ContainerLocation">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The address and port where this container will be located.</attr> 	
+</attrdef>
+<attrdef name="ParentLocation">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">OPTIONAL: The address and port of the parent container.</attr> 	
+</attrdef>
+</form>
+<form name="RegisterAccount" >
+<attr name="Description">Associates a VDAB Client with a user and account and saves this information. Only personal accounts are currently supported</attr>
+<attr name="FormGroup">VDAB</attr>
+<attrdef name="AccountType" type="Integer">
+	<attr name="Category">Required</attr>
+	<attr name="DefaultValue" type="Integer" >1</attr>
+	<attr name="Desc">The account type. Either personal or corporate</attr> 	
+	<attr name="Enum">AccountType</attr>
+	<attr name="Readonly" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="AccountName">
+    <attr name="Readonly" type="Boolean">true</attr>
+	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="Desc">The assigned account name. For personal accounts this is not needed</attr> 		
+</attrdef>
+<attrdef name="Username">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="Desc">The username of the person responsible for this account. Do not include spaces</attr> 		
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The password for the person associated with the account.</attr> 	
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="EMail">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">A valid Email is required.</attr> 	
+</attrdef>
+</form>
+<form name="SelectContainerDirectory" >
+ <attr name="Description">Select container location and container directory</attr>
+ <attr name="FormGroup">VDAB</attr>
+ <attrdef name="ContainerLocation" >
+     <attr name="DefaultValue" type="String">${Container.ParentLocation}</attr>
+ </attrdef>
+ <attrdef name="Directory" >
+ </attrdef>
+</form>
+<!-- ACCOUNT - DEPRECATED -->
+<form name="changePassword" >
+<attr name="Description">Change your account password</attr>
+<attr name="FormGroup">Account</attr>
+<attrdef name="AccountName">
+	<attr name="Category">Required</attr>
+	<attr name="DefaultValue" type="String" >${Client.AccountName}</attr> 
+	<attr name="Readonly" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="Username">
+	<attr name="Desc">Your user name</attr> 
+	<attr name="DefaultValue" type="String" >${Client.Username}</attr> 	
+	<attr name="Readonly" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="OldPassword">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="NewPassword">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+</form>
+<form name="createCloudServer" >
+<attr name="Description">Create a VDAB cloud server</attr>
+<attr name="FormGroup">Account</attr>
+<attrdef name="AccountName">
+ 	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="DefaultValue" type="String" >${Client.AccountName}</attr> 
+	<attr name="Desc">The assigned account name</attr> 		
+	<attr name="Readonly" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="Username">
+ 	<attr name="Desc">Your user name</attr> 	
+	<attr name="DefaultValue" type="String" >${Client.Username}</attr> 	
+	<attr name="Readonly" type="Boolean">true</attr>	
+</attrdef>
+<attrdef name="DemoVersion" type="Boolean">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">Is this a demo version only?</attr> 	
+	<attr name="Default" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The password for the account owner</attr> 	
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="DatabaseType" type="String">
+	<attr name="Category">Standard</attr>
+	<attr name="PickFrom">NONE,H2,MySQL</attr>
+	<attr name="DefaultValue">H2</attr>
+	<attr name="Desc">The type of event database</attr> 	
+</attrdef>
+<attrdef name="Memory" type="Integer">
+	<attr name="Category">Standard</attr>
+	<attr name="PickFrom">100,200,500</attr>
+	<attr name="DefaultValue" type="Integer" >100</attr>
+	<attr name="Desc">Maximum available container memory in megabytes.</attr> 	
+</attrdef>
+<attrdef name="DiskSpace" type="Integer">
+	<attr name="Category">Standard</attr>
+	<attr name="PickFrom">20,50,100,200,500</attr>
+	<attr name="DefaultValue" type="Integer" >20</attr>
+	<attr name="Desc">Dedicated disk space in gigabytes.</attr> 	
+</attrdef>
+</form>
+<form name="PurchaseContainerKeys" >
+<attr name="FormGroup">Account</attr>
+<attr name="Description">Container keys can be purchased - All payment information will be handled using secure...</attr>
+<attrdef name="AccountName">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">24</attr>
+	<attr name="RefreshOnChange" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="AccountType" type="Integer">
+	<attr name="Category">Required</attr>
+	<attr name="DefaultValue"  type="Integer">1</attr>
+	<attr name="Enum">AccountType</attr>
+</attrdef>
+<attrdef name="Username">
+	<attr name="Category">Required</attr>
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="KeyType">
+	<attr name="Category">Required</attr>
+</attrdef>
+<attrdef  type="Integer" name="NumberOfKeys">
+	<attr name="MaxChars" type="Integer">1</attr>
+	<attr name="Category">Required</attr>
+</attrdef>
+</form>
+<!-- INTERNAL - HIDDEN -->
+<form name="PropagationAndPersistance" >
+<attr name="Desc">Describe how far event data should be propogated and how long it should be persisted</attr>
+<attrdef type="Integer" name="PropagateTo">
+	<attr name="Category">Required</attr>
+	<attr name="DefaultValue" type="Integer" >3</attr>
+	<attr name="Enum">BodyOfWaterType</attr>
+	<attr name="Desc">Selects how far an event shoud be propagated. Read the EventWatershed documentation to learn about the body of water propagation types.</attr> 	
+</attrdef>
+<attrdef type="Integer" name="PropagateInfoTo">
+	<attr name="Category">Hidden</attr>
+	<attr name="Enum">BodyOfWaterType</attr>
+</attrdef>
+<attrdef type="Integer" name="RelevantFor">
+	<attr name="Category">Required</attr>
+	<attr name="DefaultValue" type="Integer" >604800</attr>
+	<attr name="Enum">PersistTimeUnit</attr>
+	<attr name="Desc">Selects how long the event will be retained. After this time is up it will be purged from all systems.</attr> 		
+</attrdef>
+<attrdef type="String" name="SourceLabel">
+	<attr name="Category">Standard</attr>
+	<attr name="Desc">This allows designating a source label that is not the same as the Node name.</attr> 			
+</attrdef>
+<attrdef type="String" name="ObjectID">
+	<attr name="Category">Hidden</attr>
+</attrdef>
+</form>
+<form name="SaveFileLocally" >
+<attr name="Description">Identify the local directory where you would like to save the file</attr>
+<attrdef type="Integer" name="LocalDirectoryPath">
+	<attr name="Category">Required</attr>
+	<attr name="Enum">FilePathType</attr>
+	<attr name="RefreshOnChange" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="LocalDirectory">
+	<attr name="Category">Required</attr>
+	<attr name="RefreshOnChange" type="Boolean">true</attr>
+</attrdef>
+</form>
+<form name="ScanLocalContainers" >
+<attr name="Description">Finds VDAB containers located on your subnet. Enter the first and last IP to check</attr>
+<attrdef name="Subnet">
+	<attr name="Category">Required</attr>
+</attrdef>
+<attrdef name="Port" type="Integer">
+	<attr name="Category">Required</attr>
+	<attr name="Enum">VDABLocalPorts</attr>
+	<attr name="DefaultValue" type="Integer">1775</attr>
+	<attr name="MaxChars" type="Integer">5</attr>
+</attrdef>
+<attrdef name="FirstIP" type="Integer">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">3</attr>
+</attrdef>
+<attrdef name="LastIP" type="Integer">
+	<attr name="Category">Required</attr>
+	<attr name="MaxChars" type="Integer">3</attr>
+</attrdef>
+</form>
+<form name="AddContainerShortcut" >
+<attr name="Description">Enter container information to create a shortcut on your desktop. Enter either a) the public name or b) the domain and port</attr>
+<attrdef name="ContainerLocation">
+	<attr name="Category">Standard</attr>
+</attrdef>
+</form>
+<form name="AddGroupShortcut" >
+<attr name="Description">Enter group information to create a shortcut on your desktop. Enter either a) the public name or b) the domain and port</attr>
+<attrdef name="ContainerLocation">
+	<attr name="Category">Standard</attr>
+</attrdef>
+</form>
+<form name="SetRemoteAccess" >
+ <attr name="Description">Entering this information will allow access to the container outside of the local network. 
+     The router will also to be set to forward the ports
+ </attr>
+<attrdef type="Integer"  name="ContainerExternalPort">
+	<attr name="Category">Required</attr>
+</attrdef>
+<attrdef  name="ContainerExternalDomainName">
+	<attr name="Category">Required</attr>
+</attrdef>
+</form>
+<form name="EnterPublicName" >
+ <attr name="Description">Enters the container public name
+ </attr>
+<attrdef name="ContainerPublicName">
+	<attr name="Category">Required</attr>
+</attrdef>
+</form>
+<form name="CreateFlow" >
+ <attr name="Description">Enter the flow name and description to create a flow
+ </attr>
+ <attrdef name="FlowType" type="Integer">
+	<attr name="Category">Required</attr>
+	<attr name="Enum">FlowType</attr>
+</attrdef>
+<attrdef name="FlowGroup">
+	<attr name="Category">Required</attr>
+</attrdef>
+<attrdef name="FlowName">
+	<attr name="Category">Required</attr>
+</attrdef>
+<attrdef name="Description">
+	<attr name="Category">Standard</attr>
+</attrdef>
+<attrdef name="SupportedSystem" type="Integer">
+	<attr name="Category">Required</attr>
+	<attr name="Enum">OperatingSystem</attr>
+</attrdef>
+</form>
+<form name="StartInterval" >
+ <attr name="Description">Enter an interval name to be started
+ </attr>
+ <attrdef name="IntervalName">
+     <attr name="Category">Required</attr>
+ </attrdef>
+</form>
+<!-- DEPRECATED GROUP - DEPRECATE -->
+<form name="RegisterContainer" >
+<attr name="Description">Associates a container with an account and assigns an activation key to the account</attr>
+<attr name="FormGroup">DEPRECATE</attr>
+<attrdef name="AccountName">
+	<attr name="Category">Required</attr>
+	<attr name="DefaultValue" type="String" >${Container.Administrator}</attr>
+	<attr name="Desc">The name of the account which will be associated with this container.</attr> 		
+	<attr name="Readonly" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="Administrator">
+	<attr name="Category">Required</attr>
+		<attr name="DefaultValue" type="String" >${Container.Administrator}</attr>
+	<attr name="Desc">The primary administrator for this container</attr> 		
+	<attr name="Readonly" type="Boolean">true</attr>
+</attrdef>
+<attrdef name="Password">
+    <attr name="HashOutput" type="Boolean">true</attr>
+	<attr name="Category">Required</attr>
+	<attr name="Desc">The password of the primary administrator for this container.</attr> 	
+	<attr name="SpecialType">Password</attr>
+</attrdef>
+<attrdef name="ActivationKey">
+	<attr name="Category">Required</attr>
+	<attr name="Desc">Your system activation key which you should have received in the email confirming your registration</attr>
+</attrdef>
+</form>
+</forms>
