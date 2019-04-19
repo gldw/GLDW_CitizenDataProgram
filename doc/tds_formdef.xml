@@ -11,8 +11,8 @@
 </attrdef>
 <attrdef type="String" name="UserID">
 		<attr name="Category">Required</attr>
-		<attr name="Desc">Your assigned User ID.</attr> 	
-		<attr name="MaxChars" type="Integer">8</attr>
+		<attr name="Desc">Your Email address serving as your user ID.</attr> 	
+		<attr name="MaxChars" type="Integer">36</attr>
 </attrdef>
 <attrdef type="Long" name="CollectionDate">
      <attr name="DefaultValue" type="String">${Time.Now}</attr>
